@@ -1,15 +1,22 @@
 package com.example.zhangcedemos.screen_shot
 
 import android.content.Intent
+import android.hardware.display.DisplayManager
+import android.hardware.display.VirtualDisplay
+import android.media.projection.MediaProjection
 import android.media.projection.MediaProjectionManager
 import android.os.Build
 import android.os.Bundle
 import android.os.SystemClock
+import android.util.Log
+import android.view.Surface
+import android.view.SurfaceView
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.zhangcedemos.R
+import com.example.zhangcedemos.screen_shot.ScreenShotActivity.REQUEST_MEDIA_PROJECTION
 
 /**
  * author : zhangce
@@ -19,9 +26,15 @@ class UseScreenShotActivity : AppCompatActivity() {
     private val REQ_CODE_PER = 0x2304
     private val REQ_CODE_ACT = 0x2305
 
+    private val mediaProjectionManager: MediaProjectionManager by lazy { getSystemService(MEDIA_PROJECTION_SERVICE) as MediaProjectionManager }
+    private var mediaProjection: MediaProjection? = null
+    private var virtualDisplay: VirtualDisplay? = null
+    private lateinit var surfaceView :SurfaceView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_srceen_shot)
+        surfaceView = findViewById(R.id.surfaceView)
     }
 
     /**
@@ -29,12 +42,13 @@ class UseScreenShotActivity : AppCompatActivity() {
      * This method will request permission and take screenshot on this Activity.
      */
     fun onClickReqPermission(view: View?) {
-        if (Build.VERSION.SDK_INT >= 21) {
-            startActivityForResult(
-                createScreenCaptureIntent(),
-                REQ_CODE_PER
-            )
-        }
+        startActivityForResult(mediaProjectionManager.createScreenCaptureIntent(), REQUEST_MEDIA_PROJECTION)
+//        if (Build.VERSION.SDK_INT >= 21) {
+//            startActivityForResult(
+//                createScreenCaptureIntent(),
+//                REQ_CODE_PER
+//            )
+//        }
     }
 
     /**
@@ -64,40 +78,54 @@ class UseScreenShotActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        when (requestCode) {
-            REQ_CODE_ACT -> {
-                if (resultCode == RESULT_OK && data != null) {
-                    toast("Screenshot saved at " + data.data.toString())
-                } else {
-                    toast("You got wrong.")
-                }
+        if (requestCode == REQUEST_MEDIA_PROJECTION) {
+            if (resultCode != RESULT_OK) {
+                Log.d("~~~", "User cancelled")
+                return
             }
-//            REQ_CODE_PER -> {
+            Log.d("~~~", "Starting screen capture")
+            mediaProjection = mediaProjectionManager.getMediaProjection(resultCode, data!!)
+            virtualDisplay = mediaProjection!!.createVirtualDisplay(
+                "ScreenCapture",
+                ScreenUtils.getScreenWidth(), ScreenUtils.getScreenHeight(), ScreenUtils.getScreenDensityDpi(),
+                DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,
+                surfaceView.holder.surface, null, null
+            )
+        }
+//        when (requestCode) {
+//            REQ_CODE_ACT -> {
 //                if (resultCode == RESULT_OK && data != null) {
-//                    val shooter = Shooter(this@UseScreenShotActivity, resultCode, data)
-//                    shooter.startScreenShot(getSavedPath(), object : Shooter.OnShotListener {
-//                        //                        fun onFinish(path: String) {
-////                            //here is done status.
+//                    toast("Screenshot saved at " + data.data.toString())
+//                } else {
+//                    toast("You got wrong.")
+//                }
+//            }
+////            REQ_CODE_PER -> {
+////                if (resultCode == RESULT_OK && data != null) {
+////                    val shooter = Shooter(this@UseScreenShotActivity, resultCode, data)
+////                    shooter.startScreenShot(getSavedPath(), object : Shooter.OnShotListener {
+////                        //                        fun onFinish(path: String) {
+//////                            //here is done status.
+//////                            toast("Screenshot saved at $path")
+//////                        }
+//////
+//////                        fun onError() {
+//////                            toast("You got wrong.")
+//////                        }
+////                        override fun onFinish(path: String?) {
 ////                            toast("Screenshot saved at $path")
 ////                        }
 ////
-////                        fun onError() {
+////                        override fun onError() {
 ////                            toast("You got wrong.")
 ////                        }
-//                        override fun onFinish(path: String?) {
-//                            toast("Screenshot saved at $path")
-//                        }
-//
-//                        override fun onError() {
-//                            toast("You got wrong.")
-//                        }
-//                    })
-//                } else if (resultCode == RESULT_CANCELED) {
-//                    //user canceled.
-//                } else {
-//                }
-//            }
-        }
+////                    })
+////                } else if (resultCode == RESULT_CANCELED) {
+////                    //user canceled.
+////                } else {
+////                }
+////            }
+//        }
     }
 
 

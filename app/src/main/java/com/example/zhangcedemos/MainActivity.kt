@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.zhangcedemos.screen_shot.UseScreenShotActivity
+import com.example.zhangcedemos.videoplayonline.VideoPlayOnlineActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,6 +13,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         findViewById<Button>(R.id.screen_shot_btn).setOnClickListener {
             startActivity(Intent(this@MainActivity, UseScreenShotActivity::class.java))
+        }
+        findViewById<Button>(R.id.video_play_online_btn).setOnClickListener {
+            startActivity(Intent(this@MainActivity, VideoPlayOnlineActivity::class.java))
         }
     }
 }
