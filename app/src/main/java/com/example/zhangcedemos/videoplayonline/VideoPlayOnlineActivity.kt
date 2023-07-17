@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.example.zhangcedemos.R
 import com.example.zhangcedemos.videoplayonline.player.UniversalMediaController
@@ -20,11 +21,11 @@ class VideoPlayOnlineActivity : AppCompatActivity(), UniversalVideoView.VideoVie
     lateinit var mVideoController: UniversalMediaController
     lateinit var mStartBtn: Button
 
-    private val mSeekPosition = 0
+    private var mSeekPosition = 0
     private var cachedHeight = 0
-    private val isFullscreen = false
+    private var isFullscreen = false
 
-    private val VIDEO_URL = "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+    private val VIDEO_URL = "https://v-cdn.zjol.com.cn/280443.mp4"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_video_play_online)
@@ -41,7 +42,6 @@ class VideoPlayOnlineActivity : AppCompatActivity(), UniversalVideoView.VideoVie
         mVideoView.setOnCompletionListener {
             Log.e("zhangce", "播放完成")
         }
-
     }
 
     /**
@@ -64,10 +64,42 @@ class VideoPlayOnlineActivity : AppCompatActivity(), UniversalVideoView.VideoVie
 
     override fun onScaleChange(isFullscreen: Boolean) {
         Log.e("zhangce", "全屏切换")
+        this.isFullscreen = isFullscreen
+        if (isFullscreen) {
+            val layoutParams: ViewGroup.LayoutParams = mVideoView.getLayoutParams()
+            layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
+            layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
+            mVideoView.setLayoutParams(layoutParams)
+//            mVideoController.setVisibility(View.GONE)
+        } else {
+            val layoutParams: ViewGroup.LayoutParams = mVideoView.getLayoutParams()
+            layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
+            layoutParams.height = cachedHeight
+            mVideoView.setLayoutParams(layoutParams)
+//            mBottomLayout.setVisibility(View.VISIBLE)
+        }
+
+        switchTitleBar(!isFullscreen)
+    }
+
+    private fun switchTitleBar(show: Boolean) {
+        val supportActionBar: ActionBar? = supportActionBar
+        if (supportActionBar != null) {
+            if (show) {
+                supportActionBar.show()
+            } else {
+                supportActionBar.hide()
+            }
+        }
     }
 
     override fun onPause(mediaPlayer: MediaPlayer?) {
         Log.e("zhangce", "暂停播放")
+        if (mVideoView != null && mVideoView.isPlaying) {
+            mSeekPosition = mVideoView.currentPosition
+            Log.e("zhangce", "暂停 = seek $mSeekPosition")
+            mVideoView.pause()
+        }
     }
 
     override fun onStart(mediaPlayer: MediaPlayer?) {
