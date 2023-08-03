@@ -26,6 +26,12 @@
                 android:layout_height="wrap_content"
                 android:text="视频在线播放"/>
 
+            <Button
+                android:id="@+id/viewpager_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="viewpager卡片"/>
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

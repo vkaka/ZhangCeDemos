@@ -30,6 +30,7 @@
         <activity android:name=".screen_shot.UseScreenShotActivity" />
         <activity android:name=".screen_shot.ScreenShotActivity" />
         <activity android:name=".videoplayonline.VideoPlayOnlineActivity" />
+        <activity android:name=".viewpager.MyViewPagerDemo" />
     </application>
 
 </manifest>

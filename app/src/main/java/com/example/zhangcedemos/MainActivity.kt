@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import com.example.zhangcedemos.screen_shot.UseScreenShotActivity
 import com.example.zhangcedemos.videoplayonline.VideoPlayOnlineActivity
+import com.example.zhangcedemos.viewpager.MyViewPagerDemo
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,6 +17,9 @@ class MainActivity : AppCompatActivity() {
         }
         findViewById<Button>(R.id.video_play_online_btn).setOnClickListener {
             startActivity(Intent(this@MainActivity, VideoPlayOnlineActivity::class.java))
+        }
+        findViewById<Button>(R.id.viewpager_btn).setOnClickListener {
+            startActivity(Intent(this@MainActivity, MyViewPagerDemo::class.java))
         }
     }
 }
