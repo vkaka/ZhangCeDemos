@@ -1,8 +1,8 @@
 package com.example.zhangcedemos.viewpager
 
-import android.graphics.BitmapFactory
+import android.graphics.Bitmap
 import android.os.Bundle
-import android.util.Log
+import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
@@ -17,6 +17,7 @@ import java.util.*
  **/
 class MyViewPagerDemo : AppCompatActivity() {
     private lateinit var viewpager: ViewPager
+    private lateinit var zxingView: ImageView
 
     private val mDrawables = intArrayOf(
         R.mipmap.guidao_d,
@@ -39,11 +40,14 @@ class MyViewPagerDemo : AppCompatActivity() {
 
     private fun initView() {
         viewpager = findViewById(R.id.demo_vp)
+        zxingView = findViewById(R.id.demo_zxing_view)
         val viewPagerRootView = findViewById<RelativeLayout>(R.id.viewPagerRootView)
 
 
         //未封装Banner
         initBannerViewPager(viewpager, viewPagerRootView)
+        val bp = ZXingUtils.createQRImage("http://www.baidu.com", 400, 400)
+        zxingView.setImageBitmap(bp)
     }
 
     private fun initListener() {
@@ -81,32 +85,32 @@ class MyViewPagerDemo : AppCompatActivity() {
             }
 
             override fun onPageSelected(position: Int) {
-                val drawable: Int = mDrawables.get(position % mDrawables.size)
-                val bitmap = BitmapFactory.decodeResource(resources, drawable)
-                ColorUtil.getInstance().initPalette(bitmap, object : ColorUtil.onColorUtilClick {
-                    override fun bitmapColors(
-                        hotColor: Int,
-                        darkMutedColor: Int,
-                        lightMutedColor: Int,
-                        darkVibrantColor: Int,
-                        lightVibrantColor: Int,
-                        mutedColor: Int,
-                        vibrantColor: Int
-                    ) {
-                        Log.i("szjHotColor2", hotColor.toString() + "")
-                        //普通设置颜色
-                        //circleRelateLayout.setBackgroundColor(hotColor);
-
-                        //设置渐变颜色
-//                        int[] color = new int[]{mutedColor, lightVibrantColor, vibrantColor};
-//                        ColorUtil.getInstance().setGradualChange(circleRelateLayout, color, GradientDrawable.Orientation.TL_BR, 0);
-
-                        //动画设置背景颜色
-                        ColorUtil.getInstance()
-                            .setAnimatorColor(viewPagerRootView, 1000, mHotColor, hotColor)
-                        mHotColor = hotColor
-                    }
-                })
+//                val drawable: Int = mDrawables.get(position % mDrawables.size)
+//                val bitmap = BitmapFactory.decodeResource(resources, drawable)
+//                ColorUtil.getInstance().initPalette(bitmap, object : ColorUtil.onColorUtilClick {
+//                    override fun bitmapColors(
+//                        hotColor: Int,
+//                        darkMutedColor: Int,
+//                        lightMutedColor: Int,
+//                        darkVibrantColor: Int,
+//                        lightVibrantColor: Int,
+//                        mutedColor: Int,
+//                        vibrantColor: Int
+//                    ) {
+//                        Log.i("szjHotColor2", hotColor.toString() + "")
+//                        //普通设置颜色
+//                        //circleRelateLayout.setBackgroundColor(hotColor);
+//
+//                        //设置渐变颜色
+////                        int[] color = new int[]{mutedColor, lightVibrantColor, vibrantColor};
+////                        ColorUtil.getInstance().setGradualChange(circleRelateLayout, color, GradientDrawable.Orientation.TL_BR, 0);
+//
+//                        //动画设置背景颜色
+//                        ColorUtil.getInstance()
+//                            .setAnimatorColor(viewPagerRootView, 1000, mHotColor, hotColor)
+//                        mHotColor = hotColor
+//                    }
+//                })
             }
 
             override fun onPageScrollStateChanged(state: Int) {

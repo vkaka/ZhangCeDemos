@@ -12,25 +12,32 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
             <Button
                 android:id="@+id/screen_shot_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="截屏相关"/>
+                android:text="截屏相关" />
 
             <Button
                 android:id="@+id/video_play_online_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="视频在线播放"/>
+                android:text="视频在线播放" />
 
             <Button
                 android:id="@+id/viewpager_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="viewpager卡片"/>
+                android:text="viewpager卡片" />
+
+            <Button
+                android:id="@+id/shopping_cart_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="购物车Demo" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

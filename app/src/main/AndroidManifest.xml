@@ -31,6 +31,7 @@
         <activity android:name=".screen_shot.ScreenShotActivity" />
         <activity android:name=".videoplayonline.VideoPlayOnlineActivity" />
         <activity android:name=".viewpager.MyViewPagerDemo" />
+        <activity android:name=".shopping_cart.ShoppingCartActivity" />
     </application>
 
 </manifest>

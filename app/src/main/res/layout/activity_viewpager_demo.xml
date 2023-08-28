@@ -22,4 +22,12 @@
 
     </RelativeLayout>
 
+    <ImageView
+        android:id="@+id/demo_zxing_view"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_alignParentBottom="true"
+        />
+
 </RelativeLayout>
