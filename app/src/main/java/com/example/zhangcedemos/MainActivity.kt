@@ -8,6 +8,7 @@ import com.example.zhangcedemos.screen_shot.UseScreenShotActivity
 import com.example.zhangcedemos.shopping_cart.ShoppingCartActivity
 import com.example.zhangcedemos.videoplayonline.VideoPlayOnlineActivity
 import com.example.zhangcedemos.viewpager.MyViewPagerDemo
+import com.example.zhangcedemos.xiecheng.XieChengActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +25,9 @@ class MainActivity : AppCompatActivity() {
         }
         findViewById<Button>(R.id.shopping_cart_btn).setOnClickListener {
             startActivity(Intent(this@MainActivity, ShoppingCartActivity::class.java))
+        }
+        findViewById<Button>(R.id.xie_cheng_btn).setOnClickListener {
+            startActivity(Intent(this@MainActivity, XieChengActivity::class.java))
         }
     }
 }

@@ -32,6 +32,7 @@
         <activity android:name=".videoplayonline.VideoPlayOnlineActivity" />
         <activity android:name=".viewpager.MyViewPagerDemo" />
         <activity android:name=".shopping_cart.ShoppingCartActivity" />
+        <activity android:name=".xiecheng.XieChengActivity" />
     </application>
 
 </manifest>

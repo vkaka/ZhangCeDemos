@@ -39,6 +39,12 @@
                 android:layout_height="wrap_content"
                 android:text="购物车Demo" />
 
+            <Button
+                android:id="@+id/xie_cheng_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="关于协程(初始化未完成)" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
