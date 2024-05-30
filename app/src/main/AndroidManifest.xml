@@ -33,6 +33,7 @@
         <activity android:name=".viewpager.MyViewPagerDemo" />
         <activity android:name=".shopping_cart.ShoppingCartActivity" />
         <activity android:name=".xiecheng.XieChengActivity" />
+        <activity android:name=".svg_demo.SvgDemoActivity" />
     </application>
 
 </manifest>

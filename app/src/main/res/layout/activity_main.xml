@@ -45,6 +45,12 @@
                 android:layout_height="wrap_content"
                 android:text="关于协程(初始化未完成)" />
 
+            <Button
+                android:id="@+id/svg_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Glide加载SVG" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

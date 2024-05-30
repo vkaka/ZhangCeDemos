@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import com.example.zhangcedemos.screen_shot.UseScreenShotActivity
 import com.example.zhangcedemos.shopping_cart.ShoppingCartActivity
+import com.example.zhangcedemos.svg_demo.SvgDemoActivity
 import com.example.zhangcedemos.videoplayonline.VideoPlayOnlineActivity
 import com.example.zhangcedemos.viewpager.MyViewPagerDemo
 import com.example.zhangcedemos.xiecheng.XieChengActivity
@@ -28,6 +29,9 @@ class MainActivity : AppCompatActivity() {
         }
         findViewById<Button>(R.id.xie_cheng_btn).setOnClickListener {
             startActivity(Intent(this@MainActivity, XieChengActivity::class.java))
+        }
+        findViewById<Button>(R.id.svg_btn).setOnClickListener {
+            startActivity(Intent(this@MainActivity, SvgDemoActivity::class.java))
         }
     }
 }
