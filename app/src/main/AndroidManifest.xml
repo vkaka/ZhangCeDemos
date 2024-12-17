@@ -34,6 +34,7 @@
         <activity android:name=".shopping_cart.ShoppingCartActivity" />
         <activity android:name=".xiecheng.XieChengActivity" />
         <activity android:name=".svg_demo.SvgDemoActivity" />
+        <activity android:name=".charts.ChartsDemoActivity" />
     </application>
 
 </manifest>

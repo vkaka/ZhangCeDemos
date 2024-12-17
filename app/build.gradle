@@ -51,5 +51,7 @@ dependencies {
 
     implementation "com.airbnb.android:lottie:6.4.1"
 
+    implementation "com.github.lecho:hellocharts-library:1.5.8@aar"
+
 //    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:x.x.x"
 }

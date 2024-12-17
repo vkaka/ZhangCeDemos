@@ -51,6 +51,12 @@
                 android:layout_height="wrap_content"
                 android:text="Glide加载SVG" />
 
+            <Button
+                android:id="@+id/charts_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="折线图" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
