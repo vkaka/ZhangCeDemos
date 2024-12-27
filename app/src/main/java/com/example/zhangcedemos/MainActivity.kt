@@ -6,8 +6,10 @@ import android.os.Bundle
 import android.widget.Button
 import com.example.zhangcedemos.charts.ChartsDemoActivity
 import com.example.zhangcedemos.screen_shot.UseScreenShotActivity
+import com.example.zhangcedemos.select_city.SelectCity2Activity
 import com.example.zhangcedemos.shopping_cart.ShoppingCartActivity
 import com.example.zhangcedemos.svg_demo.SvgDemoActivity
+import com.example.zhangcedemos.upan_demo.UpanDemoActivity
 import com.example.zhangcedemos.videoplayonline.VideoPlayOnlineActivity
 import com.example.zhangcedemos.viewpager.MyViewPagerDemo
 import com.example.zhangcedemos.xiecheng.XieChengActivity
@@ -36,6 +38,13 @@ class MainActivity : AppCompatActivity() {
         }
         findViewById<Button>(R.id.charts_btn).setOnClickListener {
             startActivity(Intent(this@MainActivity, ChartsDemoActivity::class.java))
+        }
+        findViewById<Button>(R.id.upan_btn).setOnClickListener {
+            startActivity(Intent(this@MainActivity, UpanDemoActivity::class.java))
+        }
+
+        findViewById<Button>(R.id.city_list_btn).setOnClickListener {
+            startActivity(Intent(this@MainActivity, SelectCity2Activity::class.java))
         }
     }
 }
