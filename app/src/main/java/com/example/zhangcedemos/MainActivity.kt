@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import com.example.zhangcedemos.charts.Charts2DemoActivity
 import com.example.zhangcedemos.charts.ChartsDemoActivity
+import com.example.zhangcedemos.png2pdf.Png2PdfActivity
 import com.example.zhangcedemos.screen_shot.UseScreenShotActivity
 import com.example.zhangcedemos.select_city.SelectCity2Activity
 import com.example.zhangcedemos.shopping_cart.ShoppingCartActivity
@@ -49,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.png2pdf_btn).setOnClickListener {
-            startActivity(Intent(this@MainActivity, Charts2DemoActivity::class.java))
+            startActivity(Intent(this@MainActivity, Png2PdfActivity::class.java))
         }
     }
 }
