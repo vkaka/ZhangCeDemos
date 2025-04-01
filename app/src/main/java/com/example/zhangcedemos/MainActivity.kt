@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.example.zhangcedemos.charts.Charts2DemoActivity
 import com.example.zhangcedemos.charts.ChartsDemoActivity
 import com.example.zhangcedemos.screen_shot.UseScreenShotActivity
 import com.example.zhangcedemos.select_city.SelectCity2Activity
@@ -43,8 +44,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this@MainActivity, UpanDemoActivity::class.java))
         }
 
-        findViewById<Button>(R.id.city_list_btn).setOnClickListener {
-            startActivity(Intent(this@MainActivity, SelectCity2Activity::class.java))
+        findViewById<Button>(R.id.charts2_btn).setOnClickListener {
+            startActivity(Intent(this@MainActivity, Charts2DemoActivity::class.java))
+        }
+
+        findViewById<Button>(R.id.png2pdf_btn).setOnClickListener {
+            startActivity(Intent(this@MainActivity, Charts2DemoActivity::class.java))
         }
     }
 }

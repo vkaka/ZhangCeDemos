@@ -50,6 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Glide加载SVG" />
+
             <Button
                 android:id="@+id/upan_btn"
                 android:layout_width="match_parent"
@@ -67,6 +68,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="折线图" />
+
+            <Button
+                android:id="@+id/charts2_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="折线图2" />
+
+            <Button
+                android:id="@+id/png2pdf_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="图片转pdf" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

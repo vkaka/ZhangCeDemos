@@ -37,12 +37,15 @@
         <activity android:name=".charts.ChartsDemoActivity" />
         <activity android:name=".upan_demo.UpanDemoActivity" />
         <activity android:name=".select_city.SelectCity2Activity" />
+        <activity android:name=".charts.Charts2DemoActivity" />
+        <activity android:name=".png2pdf.Png2PdfActivity" />
 
         <receiver android:name=".upan_demo.USBDiskReceiver">
-            <intent-filter android:priority="999" >
+            <intent-filter android:priority="999">
                 <action android:name="android.intent.action.MEDIA_MOUNTED" />
                 <action android:name="android.intent.action.MEDIA_UNMOUNTED" />
                 <action android:name="android.intent.action.MEDIA_REMOVED" />
+
                 <data android:scheme="file" />
             </intent-filter>
         </receiver>
